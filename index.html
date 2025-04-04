@@ -809,6 +809,26 @@
             display: none;
         }
         
+        /* Loading indicator */
+        .loader {
+            text-align: center;
+            padding: 20px;
+            color: var(--secondary-text);
+        }
+        .loader-spinner {
+            border: 4px solid rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            border-top: 4px solid var(--primary-color);
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 16px;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
         @media (max-width: 768px) {
             .main-container {
                 flex-direction: column;
@@ -858,7 +878,7 @@
             </div>
             
             <div class="nav-section">
-                <div class="nav-item" data-tab="home-tab">
+                <div class="nav-item active" data-tab="home-tab">
                     <span class="nav-icon">🏠</span>
                     <span>Home</span>
                 </div>
@@ -873,7 +893,7 @@
             </div>
             
             <div class="nav-section">
-                <div class="nav-item" onclick="showUploadDialog()">
+                <div class="nav-item" id="uploadButton">
                     <span class="nav-icon">➕</span>
                     <span>Upload Music</span>
                 </div>
@@ -920,7 +940,10 @@
                     <h1 class="page-title">Your Library</h1>
                 </div>
                 <div id="trackGrid" class="track-grid">
-                    <!-- Tracks will be added here -->
+                    <div class="loader">
+                        <div class="loader-spinner"></div>
+                        <div>Loading your music...</div>
+                    </div>
                 </div>
             </div>
             
@@ -960,20 +983,3 @@
                     <div class="playlist-cover" id="playlistCover">
                         <span class="artwork-icon">♪</span>
                     </div>
-                    <div class="playlist-info">
-                        <div class="playlist-type">Playlist</div>
-                        <h1 class="playlist-name" id="playlistName">Playlist Name</h1>
-                        <div class="playlist-description" id="playlistDescription">Playlist description goes here...</div>
-                        <div class="playlist-meta">
-                            <span class="playlist-owner">User</span>
-                            <span>•</span>
-                            <span class="playlist-count" id="playlistCount">0 songs</span>
-                        </div>
-                        <div class="playlist-actions">
-                            <button class="btn-play" id="playPlaylistBtn">▶</button>
-                            <div class="playlist-menu">⋯</div>
-                        </div>
-                    </div>
-                </div>
-                
-                <table class="
